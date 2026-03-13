@@ -1,6 +1,6 @@
 # python-test
 
-Python learning project.
+Simple Python API client example.
 
 ## Install
 
@@ -8,4 +8,4 @@ pip install -r requirements.txt
 
 ## Run
 
-python hello.py
+python -m tests.test_api
