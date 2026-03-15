@@ -1,4 +1,4 @@
-from api_client import APIClient
+from api.api_client import APIClient
 
 
 def test_get_posts():
