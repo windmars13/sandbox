@@ -4,17 +4,17 @@ let age = 43;
 let isMale = true;
 
 function showInfo() {
-    console.log("有執行 JS");
+  console.log("有執行 JS");
 
-    // 性別轉換成文字
-    // 三元運算子 => 條件 ? 條件為真時的值 : 條件為假時的值
-    let genderText = isMale ? "男" : "女";
+  // 性別轉換成文字
+  // 三元運算子 => 條件 ? 條件為真時的值 : 條件為假時的值
+  let genderText = isMale ? "男" : "女";
 
-    // 組合輸出字串
-    let info = `${personName}, 年齡: ${age}, 性別: ${genderText}`;
+  // 組合輸出字串
+  let info = `${personName}, 年齡: ${age}, 性別: ${genderText}`;
 
-    // 顯示在網頁上
-    document.getElementById("output").textContent = info;
+  // 顯示在網頁上
+  document.getElementById("output").textContent = info;
 }
 // 呼叫函式
 showInfo();
