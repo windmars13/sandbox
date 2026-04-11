@@ -1,14 +1,23 @@
-# virtual environment
-venv/
-
-# python cache
-.coverage
-.pytest_cache/
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
 
-# environment variables
-.env
+# Virtual environment
+.venv/
+env/
+venv/
 
-# vscode settings
+# VS Code
 .vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test & coverage
+.coverage
+htmlcov/
