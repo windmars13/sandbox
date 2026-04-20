@@ -47,6 +47,13 @@
       "options": {
         "tabWidth": 4
       }
+    },
+    {
+      "files": ["*.sql"],
+      "options": {
+        "tabWidth": 2,
+        "keywordCase": "upper"
+      }
     }
   ]
 }

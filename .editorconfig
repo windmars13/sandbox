@@ -1,7 +1,7 @@
 root = true
 
 # ============================================================
-# 1. 通用設定：檔案結尾自動換行、移除多餘空格
+# 1. 通用設定
 # ============================================================
 [*]
 charset = utf-8
@@ -10,40 +10,46 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 # ============================================================
-# 2. 後端與編譯語言 (4 格：嚴謹邏輯)
+# 2. 後端與編譯語言 (4 格)
+# Python, PHP, Java, C, C++, C#, Dart
 # ============================================================
-# 涵蓋課程：Python, PHP
-# 銜接職場：Java, C, C++, C#, Dart
-[*.{py,php,java,c,cpp,h,cs,dart}]
+[*.{py,php,java,c,cpp,h,hpp,cs,dart}]
 indent_style = space
 indent_size = 4
 
 # ============================================================
-# 3. 前端與現代腳本 (2 格：深度巢狀)
+# 3. 前端與現代腳本 (2 格)
+# JS, TS, Vue, React, HTML, CSS
 # ============================================================
-# 涵蓋課程：JS, Vue, HTML, CSS
-# 銜接職場：TypeScript (TS), React (JSX), Svelte
-[*.{js,jsx,ts,tsx,vue,html,css,scss,less,json}]
+[*.{js,jsx,ts,tsx,vue,html,css,scss,less,json,jsonc}]
 indent_style = space
 indent_size = 2
 
 # ============================================================
-# 4. 系統與雲端基礎設施 (2 格：結構清晰)
+# 4. 系統與雲端基礎設施 (2 格)
 # ============================================================
-# 涵蓋課程：MySQL (SQL), YAML (GitHub Actions)
-# 銜接職場：Docker, Kubernetes (K8s), Terraform, Shell Script
-[*.{sql,yml,yaml,sh,bash,zsh,dockerfile}]
+[*.{sql,yml,yaml,sh,bash,zsh,tf,tfvars,toml}]
+indent_style = space
+indent_size = 2
+
+# ✅ 修正：Dockerfile 無副檔名，需獨立列出
+[Dockerfile]
+indent_style = space
+indent_size = 2
+
+# ✅ 補充：帶後綴的 Dockerfile 變體 (Dockerfile.dev, etc.)
+[Dockerfile.*]
 indent_style = space
 indent_size = 2
 
 # ============================================================
-# 5. 特殊檔案處理
+# 5. 特殊檔案
 # ============================================================
-# Makefile 通常必須使用 Tab (8格) 而非空格，這是業界硬性規定
 [Makefile]
 indent_style = tab
 indent_size = 8
 
-# Markdown 保持 2 格以便於閱讀清單
 [*.md]
+indent_style = space
 indent_size = 2
+trim_trailing_whitespace = false  # Markdown 雙空格換行需保留

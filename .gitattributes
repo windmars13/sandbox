@@ -1,3 +1,50 @@
-# .gitattributes
+# ============================================================
+# 換行符號
+# ============================================================
 * text=auto eol=lf
-*.bat text eol=crlf    # Windows 批次檔例外，必須 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# ============================================================
+# Binary 檔案（明確宣告，避免 Git 嘗試 merge/diff）
+# ============================================================
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.svg  text           # SVG 是 XML 文字，可 diff
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.pdf   binary
+*.zip   binary
+*.tar.gz binary
+*.db    binary
+*.sqlite binary
+*.sqlite3 binary
+
+# ============================================================
+# Diff 優化（讓 git diff 更好讀）
+# ============================================================
+*.js   diff=javascript
+*.ts   diff=typescript
+*.py   diff=python
+*.md   diff=markdown
+*.json diff=json        # 需 git config diff.json.textconv 設定
+
+# ============================================================
+# GitHub Linguist（影響 repo 語言統計）
+# ============================================================
+# 排除不計入語言統計的目錄
+dist/**    linguist-generated=true
+build/**   linguist-generated=true
+*.min.js   linguist-generated=true
+*.min.css  linguist-generated=true
+# 排除設定檔（避免被算成主要語言）
+*.json linguist-detectable=false
+*.yml  linguist-detectable=false

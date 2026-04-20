@@ -1,8 +1,51 @@
+# ============================================================
+# Node.js / JavaScript 生態系  ← ⚠️ 原本完全缺少
+# ============================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+package-lock.json      # 視團隊規範決定要不要 commit（通常要 commit）
+# yarn.lock            # 同上
+
+# Build 產出
+dist/
+build/
+out/
+.output/
+.nuxt/
+.next/
+.svelte-kit/
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.prettiercache
+*.tsbuildinfo
+
+# ============================================================
+# 環境變數（敏感資訊，絕對不能 commit）
+# ============================================================
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+# 保留 .env.example（可以 commit，作為範本）
+
+# ============================================================
 # Python
+# ============================================================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.pdb
 *.sqlite3
 *.log
 
@@ -10,14 +53,40 @@ __pycache__/
 .venv/
 env/
 venv/
+.python-version
 
-# VS Code
+# 測試與覆蓋率
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ============================================================
+# IDE / 編輯器
+# ============================================================
 .vscode/
-
-# OS files
+!.vscode/extensions.json   # 這個通常建議 commit
+!.vscode/settings.json     # 視需求
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Test & coverage
-.coverage
-htmlcov/
+# ============================================================
+# 測試 / CI
+# ============================================================
+coverage/
+.nyc_output/
+junit.xml
+
+# ============================================================
+# 其他
+# ============================================================
+*.local
+tmp/
+temp/

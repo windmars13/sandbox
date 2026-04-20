@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
   "devDependencies": {
     "eslint": "^10.2.1",
     "prettier": "^3.8.3"
