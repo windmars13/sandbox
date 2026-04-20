@@ -15,7 +15,8 @@
 *.gif  binary
 *.ico  binary
 *.webp binary
-*.svg  text           # SVG 是 XML 文字，可 diff
+# SVG 是 XML 文字，可 diff
+*.svg  text
 *.woff  binary
 *.woff2 binary
 *.ttf   binary
@@ -35,7 +36,8 @@
 *.ts   diff=typescript
 *.py   diff=python
 *.md   diff=markdown
-*.json diff=json        # 需 git config diff.json.textconv 設定
+# 需 git config diff.json.textconv 設定
+*.json diff=json
 
 # ============================================================
 # GitHub Linguist（影響 repo 語言統計）
