@@ -1,0 +1,3 @@
+# .gitattributes
+* text=auto eol=lf
+*.bat text eol=crlf    # Windows 批次檔例外，必須 CRLF
