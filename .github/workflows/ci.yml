@@ -35,9 +35,10 @@ jobs:
           export PYTHONPATH=$PYTHONPATH:$(pwd)
           python -m pytest --cov=src --cov-report=xml -v
 
+      # 修正點：移除 python -m，改為直接呼叫 genbadge
       - name: Generate coverage badge
         run: |
-          python -m genbadge coverage -i coverage.xml -o coverage.svg
+          genbadge coverage -i coverage.xml -o coverage.svg
 
       - name: Upload coverage badge
         uses: actions/upload-artifact@v4
