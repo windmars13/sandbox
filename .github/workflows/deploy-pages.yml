@@ -1,0 +1,26 @@
+name: Deploy Frontend to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set custom domain for GitHub Pages
+        if: ${{ secrets.GITHUB_PAGES_CUSTOM_DOMAIN != '' }}
+        run: |
+          echo "${{ secrets.GITHUB_PAGES_CUSTOM_DOMAIN }}" > practice/frontend/CNAME
+
+      - name: Deploy static site to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./practice/frontend
+          publish_branch: gh-pages
+          keep_files: false

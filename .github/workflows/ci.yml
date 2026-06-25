@@ -18,27 +18,26 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # 改用 genbadge，這對 Python 3.12 支援度更好
-          pip install pytest pytest-cov genbadge[tests] black
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+          python -m pip install pytest pytest-cov genbadge[tests] black
 
       - name: Run Black (code style check)
-        run: black --check .
+        run: python -m black --check .
 
       - name: Run tests and generate report
         run: |
           export PYTHONPATH=$PYTHONPATH:$(pwd)
-          # 產生 xml 格式的報告，這是生成 Badge 的關鍵
-          pytest --cov=src --cov-report=xml -v
+          python -m pytest --cov=src --cov-report=xml -v
 
       - name: Generate coverage badge
         run: |
-          # 使用 genbadge 讀取 coverage.xml 並產生 coverage.svg
-          genbadge coverage -i coverage.xml -o coverage.svg
+          python -m genbadge coverage -i coverage.xml -o coverage.svg
 
       - name: Upload coverage badge
         uses: actions/upload-artifact@v4
