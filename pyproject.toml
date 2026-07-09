@@ -1,11 +1,58 @@
-[tool.black]
-line-length = 88
-target-version = ['py311']
-exclude = '''
-(
-  /node_modules/
-  | /.venv/
-  | /dist/
-  | /build/
-)
-'''
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "your-project"
+version = "0.1.0"
+requires-python = ">=3.12"  # 若 README 要求 3.14，請兩邊對齊，不要各講各的
+
+# 關鍵修正：把 requirements.in/txt 裡的套件搬進這裡統一管理，
+# 之後只用這份當單一事實來源 (single source of truth)。
+# 範例（依實際內容替換）：
+dependencies = [
+    # --- Core (核心功能) ---
+    "requests",
+    "numpy",
+    "Pillow",
+    "cryptography",
+    "lxml",
+    "beautifulsoup4",
+    "redis",
+    # --- Utils (工具類) ---
+    "packaging",
+    "pathspec",
+    "keyring",
+    "python-dotenv",
+    # --- CLI (命令列工具) ---
+    "click",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    # black / isort / flake8 已移除：功能被 ruff 取代，兩套並存規則會打架
+]
+
+# src-layout：程式碼放在 src/your_project/ 底下
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --cov=src --cov-report=term-missing"
+# 注意：若專案根目錄還留有 pytest.ini，這段設定會被完全忽略（不是合併）。
+# 兩者只能留一個，建議刪掉 pytest.ini，只用這裡。
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B", "SIM", "C4"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"

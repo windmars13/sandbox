@@ -1,0 +1,17 @@
+requests
+numpy
+Pillow
+cryptography
+lxml
+beautifulsoup4
+redis
+packaging
+pathspec
+keyring
+python-dotenv
+click
+
+[dev]
+pytest
+pytest-cov
+ruff
