@@ -3,6 +3,7 @@
   "scripts": {
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "lint": "eslint .",
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
@@ -16,6 +17,7 @@
     "@eslint/js": "latest",
     "eslint": "^10.2.1",
     "eslint-config-prettier": "latest",
+    "globals": "latest",
     "lint-staged": "^15.5.1",
     "prettier": "^3.8.3",
     "simple-git-hooks": "^2.13.0"
