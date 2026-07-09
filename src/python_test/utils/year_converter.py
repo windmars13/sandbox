@@ -1,6 +1,3 @@
-from python_test.utils.year_converter import YearConverter
-
-
 def convert_roc_to_ad(roc_year):
     """將民國年份轉換為西元年份"""
     return roc_year + 1911

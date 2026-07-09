@@ -18,7 +18,7 @@ def scrape_example():
         # 提取title標題
         title_tag = soup.find("title")
         title = title_tag.text.strip() if title_tag else "找不到標題"
-        print(f"\n✅ 抓取成功！")
+        print("\n✅ 抓取成功！")
         print(f"📌 [網頁標題]: {title}")
 
         # 提取所有段落
@@ -38,7 +38,7 @@ def scrape_example():
         print("\n✨ --- 所有資料抓取完畢 ---")
 
     except requests.RequestException as e:
-        print(f"\n❌ 發生錯誤！無法抓取資料。")
+        print("\n❌ 發生錯誤！無法抓取資料。")
         print(f"錯誤原因: {e}")
 
 
