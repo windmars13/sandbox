@@ -53,8 +53,6 @@ jobs:
       # 之後 npm install -D vitest 並補上 "test": "vitest run" script 後再打開
       # - run: npm run test -- --passWithNoTests
 
-      # 關鍵修正：先裝專案本身的相依套件，否則 pytest import 專案模組會直接失敗
-      # 若改用 pyproject.toml 統一管理依賴，這行改成: pip install -e ".[dev]"
-      - run: pip install -r requirements.txt
-      - run: pip install pytest pytest-cov
+      # 關鍵修正：requirements.txt 已刪除，統一用 pyproject.toml 管理依賴
+      - run: pip install -e ".[dev]"
       - run: pytest || [ $? -eq 5 ] # exit code 5 = 沒有測試被收集到，視為通過
