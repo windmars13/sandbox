@@ -1,4 +1,6 @@
-# 這是一個簡單的網頁爬蟲範例，使用 requests 和 BeautifulSoup 來抓取 https://httpbin.org/html 網頁的標題和段落內容。
+# 這是一個簡單的網頁爬蟲範例，
+# 使用 requests 和 BeautifulSoup 來抓取
+# https://httpbin.org/html 網頁的標題和段落內容。
 import requests
 from bs4 import BeautifulSoup
 
