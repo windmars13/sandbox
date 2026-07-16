@@ -43,12 +43,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          # cache:  ← 完全移除這一行
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
       - run: npm ci
       - run: npm run test -- --passWithNoTests
-      - run: pip install pytest pytest-cov
-      - run: pytest || [ $? -eq 5 ]
+      # --- 以下為修改點 ---
+      - name: Install Python dependencies
+        run: pip install pytest pytest-cov && pip install .
+      - name: Run Python tests
+        env:
+          PYTHONPATH: .
+        run: pytest || [ $? -eq 5 ]
