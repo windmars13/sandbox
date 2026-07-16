@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm # 需要 package-lock.json 存在於 repo root 才會生效
+          # cache:  ← 完全移除這一行（或註解掉）
       - run: npm ci
       - run: npm run lint
       - run: npm run format:check
@@ -43,16 +43,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          # cache:  ← 完全移除這一行
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
       - run: npm ci
-      # 前端測試框架尚未安裝（package.json 沒有 vitest/test script），先註解避免 CI 失敗
-      # 之後 npm install -D vitest 並補上 "test": "vitest run" script 後再打開
-      # - run: npm run test -- --passWithNoTests
-
-      # 關鍵修正：requirements.txt 已刪除，統一用 pyproject.toml 管理依賴
-      - run: pip install -e ".[dev]"
-      - run: pytest || [ $? -eq 5 ] # exit code 5 = 沒有測試被收集到，視為通過
+      - run: npm run test -- --passWithNoTests
+      - run: pip install pytest pytest-cov
+      - run: pytest || [ $? -eq 5 ]

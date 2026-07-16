@@ -1,5 +1,5 @@
 # ============================================================
-# Node.js / JavaScript 生態系  ← ⚠️ 原本完全缺少
+# Node.js / JavaScript 生態系
 # ============================================================
 node_modules/
 npm-debug.log*
@@ -7,7 +7,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .pnpm-store/
-package-lock.json      # 視團隊規範決定要不要 commit（通常要 commit）
+package-lock.json
+# 視團隊規範決定要不要 commit（通常要 commit）
 # yarn.lock            # 同上
 
 # Build 產出
@@ -47,13 +48,15 @@ __pycache__/
 *.pyd
 *.pdb
 *.sqlite3
-*.log
 
 # Virtual environment
 .venv/
 env/
 venv/
-.python-version
+# .python-version 不 ignore —— pyenv 版本鎖定檔要 commit，讓團隊 Python 版本一致
+
+# Jupyter
+.ipynb_checkpoints/
 
 # 測試與覆蓋率
 .coverage
@@ -87,6 +90,7 @@ junit.xml
 # ============================================================
 # 其他
 # ============================================================
+*.log
 *.local
 tmp/
 temp/

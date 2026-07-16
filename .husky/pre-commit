@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# Husky v9：不需要再 source husky.sh
+# 注意：若有 Python 檔案改動，lint-staged 會呼叫 ruff，
+# 請確保執行 git commit 的 shell 已 activate venv（或全域安裝 ruff），
+# 否則會出現 "ruff: command not found"。
+npx lint-staged

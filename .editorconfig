@@ -32,13 +32,8 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
-# ✅ 修正：Dockerfile 無副檔名，需獨立列出
-[Dockerfile]
-indent_style = space
-indent_size = 2
-
-# ✅ 補充：帶後綴的 Dockerfile 變體 (Dockerfile.dev, etc.)
-[Dockerfile.*]
+# Dockerfile 與其變體 (Dockerfile.dev, Dockerfile.prod...)
+[{Dockerfile,Dockerfile.*}]
 indent_style = space
 indent_size = 2
 
@@ -49,7 +44,8 @@ indent_size = 2
 indent_style = tab
 indent_size = 8
 
+# Markdown 雙空格換行需保留,故關閉 trim_trailing_whitespace
 [*.md]
 indent_style = space
 indent_size = 2
-trim_trailing_whitespace = false  # Markdown 雙空格換行需保留
+trim_trailing_whitespace = false
