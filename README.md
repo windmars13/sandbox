@@ -10,20 +10,26 @@
 
 ### 套件管理
 
-- **開發**：編輯 `requirements.in`（不鎖版本，保持彈性）
-- **部署**：執行 `pip-compile requirements.in` 生成 `requirements.txt`（鎖定版本，確保一致性）
-- **安裝**：
-  ```bash
-  python -m pip install -r requirements.txt
-  ```
-  專案初始化
-  ```
-  git clone https://github.com/windmars13/sandbox.git
-  cd sandbox
-  python -m venv .venv
-  .\.venv\Scripts\activate
-  python -m pip install -r requirements.txt
-  ```
+本專案用 `pyproject.toml` 管理 Python 依賴（未使用 `requirements.in/.txt`）。
+
+```bash
+git clone https://github.com/windmars13/sandbox.git
+cd sandbox
+
+# 建立虛擬環境
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
+
+# 安裝專案（editable 模式，src-layout 需要）
+python -m pip install -e ".[dev]"
+
+# 前端依賴
+npm ci
+```
+
+> 更現代做法：用 [`uv`](https://github.com/astral-sh/uv) 取代 `venv + pip`，
+> `uv sync` 一行搞定虛擬環境建立 + 安裝 + lockfile，速度快非常多。
 
 ## 🧪 測試
 
@@ -39,13 +45,13 @@ python -m pytest -v
 
 本專案使用以下工具與平台，符合業界常見開發環境：
 
-Python 3.14 → 後端程式語言
+Python 3.12 → 後端程式語言（版本以 `pyproject.toml` 的 `requires-python` 為準）
 
 VS Code → 主流 IDE
 
 GitHub Actions (CI/CD) → 自動化測試與部署
 
-pytest / coverage / black → 測試與程式碼品質工具
+pytest / coverage / ruff → 測試與程式碼品質工具（Ruff 取代 black + flake8 + isort，設定見 `pyproject.toml`）
 
 ## 📂 專案結構
 
