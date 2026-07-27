@@ -92,9 +92,8 @@
 
   "python.analysis.typeCheckingMode": "basic",
   "python.analysis.autoImportCompletions": true,
-  // macOS/Linux 用這個路徑；Windows 使用者請改成
-  // "${workspaceFolder}\\.venv\\Scripts\\python.exe"
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  // Windows 專用路徑（原本寫的是 macOS/Linux 的 .venv/bin/python，已改成 Windows 版本）
+  "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
 
   // pytest 整合：直接在 Testing 面板跑測試，不用切終端機
   "python.testing.pytestEnabled": true,
