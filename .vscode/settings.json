@@ -37,40 +37,58 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
   // =========================================================
+  // ESLint：只管 lint，不搶 format（避免跟 Prettier 打架）
+  // =========================================================
+  "eslint.format.enable": false,
+
+  // =========================================================
   // JavaScript / TypeScript
   // =========================================================
-  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 2 },
+  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 2 },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 2 },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 2 },
+
+  // =========================================================
+  // Vue（原設定缺這段，格式化原本靠全域 fallback，這裡明確宣告）
+  // =========================================================
+  "[vue]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 2 },
 
   // =========================================================
   // HTML / CSS / JSON
   // =========================================================
-  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[scss]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 2 },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 2 },
+  "[scss]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 2 },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 2 },
+  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 2 },
 
   // =========================================================
-  // Python：只用 Ruff（不需要 python.formatting.provider，
-  // 該設定已 deprecated，交由 defaultFormatter 決定即可）
-  // =========================================================
+  // Markdown
   // .prettierrc.json 對 *.md 設 printWidth: 80，這裡對齊，避免 ruler 顯示 100 誤導斷行
+  // =========================================================
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.rulers": [80]
   },
 
+  // =========================================================
+  // Python：只用 Ruff（不需要 python.formatting.provider，
+  // 該設定已 deprecated，交由 defaultFormatter 決定即可）
+  // =========================================================
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
+    "editor.tabSize": 4,
     "editor.codeActionsOnSave": {
       "source.organizeImports.ruff": "explicit",
       "source.fixAll.ruff": "explicit"
     }
   },
+
+  // Ruff 規則集合：若專案沒有 pyproject.toml，預設只開一小部分規則，
+  // 這裡明確補上常用組合（E/F 基本錯誤、I import 排序、W 警告）
+  // "ruff.lint.args": ["--select=E,F,I,W"],
 
   "python.analysis.typeCheckingMode": "basic",
   "python.analysis.autoImportCompletions": true,

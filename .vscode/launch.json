@@ -6,7 +6,12 @@
       "type": "debugpy",
       "request": "launch",
       "program": "${file}",
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      // 讓 debug 時的相對路徑（如 pd.read_csv）以專案根目錄為準，
+      // 而非 ${file} 所在資料夾，跟 settings.json 裡 jupyter.notebookFileRoot 邏輯一致
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env"
     },
     {
       "name": "Python: Pytest（目前檔案）",
@@ -14,13 +19,33 @@
       "request": "launch",
       "module": "pytest",
       "args": ["${file}", "-v"],
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Python: FastAPI/Uvicorn",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["main:app", "--reload"],
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "cwd": "${workspaceFolder}"
     },
     {
       "name": "Node: Vite Dev Server",
       "type": "node-terminal",
       "request": "launch",
       "command": "npm run dev"
+    }
+  ],
+  // 全端開發常見場景：後端 debugpy + 前端 vite 一鍵同時啟動，
+  // 免去手動開兩個終端機分別跑
+  "compounds": [
+    {
+      "name": "全端：Python + Vite 同時啟動",
+      "configurations": ["Python: 目前檔案", "Node: Vite Dev Server"]
     }
   ]
 }

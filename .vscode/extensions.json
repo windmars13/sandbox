@@ -13,6 +13,8 @@
     "ms-toolsai.jupyter-renderers",
     "ms-toolsai.vscode-jupyter-cell-tags",
     "ms-toolsai.datawrangler",
+    // Python function 一鍵生成 docstring，資深工程師標配
+    "njpwerner.autodocstring",
 
     // 前端 / 全端
     "vue.volar",
@@ -37,5 +39,8 @@
     "pkief.material-icon-theme",
     "naumovs.color-highlight",
     "mikestead.dotenv"
-  ]
+  ],
+  // 明確排除避免重複安裝：Live Preview 與 Live Server 功能重疊（搶 port），
+  // 團隊統一用 Live Server，不建議也裝官方 Live Preview
+  "unwantedRecommendations": ["ms-vscode.live-preview"]
 }
