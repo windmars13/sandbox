@@ -16,7 +16,7 @@
 
     // 前端 / 全端
     "vue.volar",
-    "ms-vscode.live-server",
+    "ritwickdey.liveserver",
 
     // Git / 協作
     "eamodio.gitlens",
