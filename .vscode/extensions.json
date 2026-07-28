@@ -29,11 +29,10 @@
     // 其他
     "usernamehw.errorlens",
     "yzhang.markdown-all-in-one",
-    "aaron-bond.better-comments",
     "pkief.material-icon-theme",
     "naumovs.color-highlight",
     "mikestead.dotenv"
   ],
 
-  "unwantedRecommendations": ["ms-vscode.live-preview"]
+  "unwantedRecommendations": []
 }
